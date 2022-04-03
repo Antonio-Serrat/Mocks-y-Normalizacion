@@ -1,0 +1,36 @@
+{
+  "name": "sqlnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antonio-Serrat/SqlNode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Antonio-Serrat/SqlNode/issues"
+  },
+  "homepage": "https://github.com/Antonio-Serrat/SqlNode#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "faker": "5.5.3",
+    "knex": "^0.95.15",
+    "mongoose": "^6.2.9",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
+    "normalizr": "^3.6.2",
+    "pug": "^3.0.2",
+    "socket.io": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
