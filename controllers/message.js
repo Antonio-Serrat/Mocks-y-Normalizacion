@@ -1,4 +1,5 @@
 const messageModel = require('../models/messages')
+const path = require('path');
 
 module.exports = {
 
@@ -27,9 +28,11 @@ module.exports = {
     // Add new message
     newMessage: async (req, res) =>{
         try {
-            const { name, message, user_id } = req.body;
-            const date = Date.now()
-            const response = await messageModel.save(name, message, user_id, date);
+            const { firstName, email, lastName, alias, age, message, user_id } = req.body;
+            const createdDate = Date.now()
+            const avatar = path.join("static/img/" + req.file.filename)
+            console.log(avatar)
+            const response = await messageModel.save(firstName, email, lastName, alias, age, avatar, message, user_id, createdDate);
             if (!response.error){
                 res.status(201).send({
                     success: 'mensaje guardado con exito'
@@ -37,7 +40,7 @@ module.exports = {
             }else{
                 res.status(404).send({
                     error: 'Hubo un porblema al tratar enviar el mensaje',
-                    description: response.error
+                    description: response.errorDescrip
                 })
             }
         } catch (error) {
@@ -57,7 +60,7 @@ module.exports = {
             }else{
                 res.status(404).send({
                     error: 'Hubo un porblema al intentar cargar todos los mensajes',
-                    description: response.error
+                    description: response.errorDescrip
                 })
             }
         } catch (error) {

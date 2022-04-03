@@ -1,7 +1,7 @@
 module.exports = {
     SCHEMA: "mongodb+srv",
-    USER: "<user>",
-    PASSWORD: "<password>",
-    HOSTNAME: "<hostname>",
-    DATABASE: "ecommerce",
+    USER: "ToniSrt",
+    PASSWORD: "1TZE0KKZi0qwyVJT",
+    HOSTNAME: "cluster0.q4tpu.mongodb.net",
+    DATABASE: "messages",
 }

@@ -1,5 +1,10 @@
 const socketChat = io()
-const userName = document.querySelector('#username')
+const email = document.querySelector('#email')
+const firstName = document.querySelector('#firstName')
+const lastName = document.querySelector('#lastName')
+const alias = document.querySelector('#alias')
+const age = document.querySelector('#age')
+const avatar = document.querySelector('#avatar')
 const containerMessages = document.querySelector('#messages')
 const messageText = document.querySelector('#message')
 const btnMessage = document.querySelector('#btn-message')
@@ -19,13 +24,18 @@ btnMessage.addEventListener('click',async (e) => {
     if(!messageText.value){
         return
     }
-    if(!userName.value){
+    if(!email.value){
         return alert('El campo email no puede estar vacio')
     }
     
-    Message.name = userName.value
+    Message.firstName = firstName.value
+    Message.lastName = lastName.value
+    Message.email = email.value
+    Message.alias = alias.value
+    Message.age = age.value
     Message.message = messageText.value
     Message.user_id = socket.id
+    Message.avatar = avatar.value
     await fetch(`${form.baseURI}api/mensajes`, {
         method: 'POST',
         body: JSON.stringify(Message),
@@ -48,6 +58,7 @@ socket.on('new-messages', async ()=>{
 async function renderChat(){
     await fetch(`${form.baseURI}api/mensajes`)
     .then((res) => {
+        console.log(res)
         return res.json()
     })
     .then((messages) => {
@@ -67,7 +78,7 @@ async function renderChat(){
             divData.className = 'message-data'
             spanName.className = 'user'
             spanDate.className = 'date-time'
-            spanDate.innerHTML = ` [${new Date(msg.date).toLocaleString()}]: `
+            spanDate.innerHTML = ` [${new Date(msg.createdDate).toLocaleString()}]: `
             divMessage.className = 'message-body'
             
             // assign user Local or Remote
